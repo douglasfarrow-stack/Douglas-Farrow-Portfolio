@@ -1,1 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Meme Gallery</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<style>
+		:root {
+			--ink: #101010;
+			--paper: #fff7ea;
+			--sky: #8fd3ff;
+			--lime: #9cf279;
+			--melon: #ff7d66;
+			--butter: #ffd447;
+			--dot: rgba(16, 16, 16, 0.15);
+		}
 
+		body {
+			background:
+				radial-gradient(circle at 1px 1px, var(--dot) 1.2px, transparent 0) 0 0 / 14px 14px,
+				linear-gradient(135deg, #fffef8 0%, #e7f7ff 48%, #fff1d8 100%);
+			color: var(--ink);
+			font-family: "Archivo", sans-serif;
+			min-height: 100vh;
+		}
+
+		.navbar {
+			border-bottom: 4px solid var(--ink);
+			background: rgba(255, 255, 255, 0.96);
+			backdrop-filter: blur(8px);
+		}
+
+		.brand-font,
+		.hero-title,
+		.sticker {
+			font-family: "Bangers", cursive;
+			letter-spacing: 0.04em;
+		}
+
+		.brand-font {
+			font-size: 2rem;
+			line-height: 1;
+		}
+
+		.hero-panel,
+		.gallery-card {
+			border: 4px solid var(--ink);
+			background: rgba(255, 255, 255, 0.92);
+			box-shadow: 10px 10px 0 var(--ink);
+		}
+
+		.hero-panel {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.hero-panel::before,
+		.hero-panel::after {
+			content: "";
+			position: absolute;
+			border-radius: 50%;
+			opacity: 0.35;
+			z-index: 0;
+		}
+
+		.hero-panel::before {
+			width: 280px;
+			height: 280px;
+			background: var(--sky);
+			top: -110px;
+			left: -80px;
+		}
+
+		.hero-panel::after {
+			width: 220px;
+			height: 220px;
+			background: var(--lime);
+			bottom: -90px;
+			right: -60px;
+		}
+
+		.hero-content {
+			position: relative;
+			z-index: 1;
+		}
+
+		.hero-title {
+			font-size: clamp(2.5rem, 6vw, 5rem);
+			line-height: 0.92;
+			text-transform: uppercase;
+			text-shadow: 3px 3px 0 var(--butter), 6px 6px 0 var(--ink);
+			display: inline-block;
+			transform: rotate(-1deg);
+		}
+
+		.description-bubble {
+			position: relative;
+			max-width: 42rem;
+			padding: 1rem 1.2rem;
+			border: 3px solid var(--ink);
+			border-radius: 20px;
+			background: #fff;
+			box-shadow: 6px 6px 0 var(--ink);
+		}
+
+		.description-bubble::after {
+			content: "";
+			position: absolute;
+			width: 22px;
+			height: 22px;
+			left: 26px;
+			bottom: -13px;
+			background: #fff;
+			border-right: 3px solid var(--ink);
+			border-bottom: 3px solid var(--ink);
+			transform: rotate(45deg);
+		}
+
+		.sticker {
+			display: inline-block;
+			padding: 0.45rem 1rem;
+			border: 3px solid var(--ink);
+			background: var(--melon);
+			color: #fff;
+			font-size: 1.2rem;
+			box-shadow: 4px 4px 0 var(--ink);
+			clip-path: polygon(50% 0%, 62% 14%, 80% 8%, 84% 26%, 100% 24%, 91% 41%, 100% 57%, 83% 61%, 87% 80%, 69% 76%, 63% 94%, 50% 84%, 37% 94%, 31% 76%, 13% 80%, 17% 61%, 0% 57%, 9% 41%, 0% 24%, 16% 26%, 20% 8%, 38% 14%);
+		}
+
+		.section-title {
+			font-family: "Bangers", cursive;
+			font-size: clamp(2rem, 5vw, 3.25rem);
+			letter-spacing: 0.05em;
+			text-shadow: 2px 2px 0 #fff;
+		}
+
+		.gallery-card {
+			padding: 1.5rem;
+		}
+
+		.gallery-frame {
+			position: relative;
+			padding: 1rem;
+			border: 3px solid var(--ink);
+			background:
+				linear-gradient(135deg, rgba(255, 212, 71, 0.5), rgba(143, 211, 255, 0.45)),
+				#fff;
+			box-shadow: inset 0 0 0 3px rgba(16, 16, 16, 0.08);
+		}
+
+		.gallery-image {
+			display: block;
+			width: 100%;
+			height: auto;
+			border: 3px solid var(--ink);
+			box-shadow: 8px 8px 0 var(--ink);
+			cursor: zoom-in;
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		.gallery-image:hover {
+			transform: translate(-4px, -4px) rotate(-1deg);
+			box-shadow: 12px 12px 0 var(--ink);
+		}
+
+		.gallery-note {
+			border: 3px dashed var(--ink);
+			background: var(--paper);
+		}
+
+		.comic-btn {
+			border: 2px solid var(--ink);
+			border-radius: 0;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			box-shadow: 3px 3px 0 var(--ink);
+		}
+
+		.comic-btn:hover {
+			transform: translate(-2px, -2px);
+			box-shadow: 5px 5px 0 var(--ink);
+		}
+
+		.modal-content {
+			border: 4px solid var(--ink);
+			box-shadow: 10px 10px 0 var(--ink);
+		}
+
+		.modal-header {
+			border-bottom: 3px solid var(--ink);
+			background: var(--butter);
+		}
+
+		.preview-image {
+			border: 3px solid var(--ink);
+		}
+
+		footer {
+			border-top: 4px solid var(--ink);
+			background: #fff;
+		}
+
+		@media (max-width: 767px) {
+			.hero-title {
+				text-shadow: 2px 2px 0 var(--butter), 4px 4px 0 var(--ink);
+			}
+
+			.gallery-card {
+				padding: 1rem;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg sticky-top">
+		<div class="container py-2">
+			<a class="navbar-brand brand-font" href="index.html">Douglas Farrow</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="siteNav">
+				<ul class="navbar-nav ms-auto fw-semibold">
+					<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="glitch.html">Glitch Art</a></li>
+					<li class="nav-item"><a class="nav-link" href="logo.html">Logo</a></li>
+					<li class="nav-item"><a class="nav-link" href="3d.html">3D Work</a></li>
+					<li class="nav-item"><a class="nav-link" href="netart.html">Net Art</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main class="container py-4 py-lg-5">
+		<section class="hero-panel p-4 p-lg-5 mb-5">
+			<div class="hero-content">
+				<p class="sticker mb-3">Mashup Gallery</p>
+				<h1 class="hero-title mb-3">A Meme that was mashed together</h1>
+				<div class="description-bubble mb-4">
+					<p class="mb-0 fs-5">A pond x Invincible x Frieren mashed together</p>
+				</div>
+				<a href="#gallery" class="btn btn-dark comic-btn px-4">View Image</a>
+			</div>
+		</section>
+
+		<section id="gallery" class="row g-4 align-items-start">
+			<div class="col-lg-8">
+				<article class="gallery-card h-100">
+					<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+						<h2 class="section-title mb-0">Main Panel</h2>
+						<span class="fw-semibold">Click image to enlarge</span>
+					</div>
+					<div class="gallery-frame">
+						<img
+							src="Meme Image.jpg"
+							alt="A meme mashup combining a pond, Invincible, and Frieren"
+							class="gallery-image"
+							data-bs-toggle="modal"
+							data-bs-target="#previewModal"
+						>
+					</div>
+				</article>
+			</div>
+
+			<div class="col-lg-4">
+				<aside class="gallery-card gallery-note h-100">
+					<h2 class="section-title mb-3">About This Piece</h2>
+					<p class="mb-3">This page presents the mashup image as a focused gallery piece, with a full-size preview available directly from the artwork.</p>
+					<p class="mb-0">Use the menu above to move back through the rest of the portfolio.</p>
+				</aside>
+			</div>
+		</section>
+	</main>
+
+	<div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title fs-4" id="previewModalLabel">A Meme that was mashed together</h2>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body text-center p-2 p-md-4">
+					<img src="Meme Image.jpg" alt="Large preview of the meme mashup artwork" class="img-fluid preview-image">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="py-4 mt-4">
+		<div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+			<p class="mb-0 fw-semibold">Douglas Farrow Portfolio</p>
+			<p class="mb-0">Meme gallery with click-to-preview artwork.</p>
+		</div>
+	</footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
