@@ -1,1 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Net Art Gallery</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<style>
+		:root {
+			--ink: #101010;
+			--paper: #fff8ef;
+			--sky: #95dcff;
+			--peach: #ffc08a;
+			--mint: #8dffbf;
+			--sun: #ffd34f;
+			--dot: rgba(16, 16, 16, 0.14);
+		}
 
+		body {
+			background:
+				radial-gradient(circle at 1px 1px, var(--dot) 1.2px, transparent 0) 0 0 / 14px 14px,
+				linear-gradient(130deg, #fffef8 0%, #e8f7ff 45%, #fff0d8 100%);
+			color: var(--ink);
+			font-family: "Archivo", sans-serif;
+			min-height: 100vh;
+		}
+
+		.navbar {
+			border-bottom: 4px solid var(--ink);
+			background: #fff;
+		}
+
+		.brand-font,
+		.hero-title,
+		.section-title,
+		.sticker {
+			font-family: "Bangers", cursive;
+			letter-spacing: 0.05em;
+		}
+
+		.brand-font {
+			font-size: 2rem;
+			line-height: 1;
+		}
+
+		.hero-panel,
+		.gallery-card {
+			border: 4px solid var(--ink);
+			background: #fff;
+			box-shadow: 10px 10px 0 var(--ink);
+		}
+
+		.hero-panel {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.hero-panel::before,
+		.hero-panel::after {
+			content: "";
+			position: absolute;
+			border-radius: 50%;
+			opacity: 0.3;
+			z-index: 0;
+		}
+
+		.hero-panel::before {
+			width: 300px;
+			height: 300px;
+			background: var(--sky);
+			top: -120px;
+			left: -80px;
+		}
+
+		.hero-panel::after {
+			width: 220px;
+			height: 220px;
+			background: var(--peach);
+			bottom: -85px;
+			right: -55px;
+		}
+
+		.hero-content {
+			position: relative;
+			z-index: 1;
+		}
+
+		.hero-title {
+			font-size: clamp(2.4rem, 6vw, 4.8rem);
+			line-height: 0.92;
+			text-transform: uppercase;
+			text-shadow: 3px 3px 0 var(--sun), 6px 6px 0 var(--ink);
+			display: inline-block;
+			transform: rotate(-1deg);
+		}
+
+		.description-bubble {
+			position: relative;
+			max-width: 44rem;
+			padding: 1rem 1.2rem;
+			border: 3px solid var(--ink);
+			border-radius: 18px;
+			background: #fff;
+			box-shadow: 6px 6px 0 var(--ink);
+		}
+
+		.description-bubble::after {
+			content: "";
+			position: absolute;
+			width: 22px;
+			height: 22px;
+			left: 24px;
+			bottom: -13px;
+			background: #fff;
+			border-right: 3px solid var(--ink);
+			border-bottom: 3px solid var(--ink);
+			transform: rotate(45deg);
+		}
+
+		.sticker {
+			display: inline-block;
+			padding: 0.45rem 1rem;
+			border: 3px solid var(--ink);
+			background: var(--mint);
+			color: var(--ink);
+			font-size: 1.2rem;
+			box-shadow: 4px 4px 0 var(--ink);
+		}
+
+		.section-title {
+			font-size: clamp(2rem, 5vw, 3.2rem);
+			text-shadow: 2px 2px 0 #fff;
+		}
+
+		.gallery-card {
+			padding: 1.5rem;
+		}
+
+		.portal-card {
+			border: 3px solid var(--ink);
+			background:
+				linear-gradient(135deg, rgba(149, 220, 255, 0.38), rgba(255, 192, 138, 0.28)),
+				var(--paper);
+			padding: 1.25rem;
+			box-shadow: inset 0 0 0 3px rgba(16, 16, 16, 0.08);
+		}
+
+		.portal-link {
+			display: inline-block;
+			width: 100%;
+			text-align: center;
+			text-decoration: none;
+			background: #111;
+			color: #fff;
+			border: 3px solid var(--ink);
+			font-weight: 800;
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+			padding: 0.95rem 1rem;
+			box-shadow: 6px 6px 0 var(--ink);
+			transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+		}
+
+		.portal-link:hover {
+			transform: translate(-3px, -3px);
+			box-shadow: 9px 9px 0 var(--ink);
+			background: #000;
+			color: #fff;
+		}
+
+		.gallery-note {
+			border: 3px dashed var(--ink);
+			background: var(--paper);
+		}
+
+		.comic-btn {
+			border: 2px solid var(--ink);
+			border-radius: 0;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			box-shadow: 3px 3px 0 var(--ink);
+		}
+
+		.comic-btn:hover {
+			transform: translate(-2px, -2px);
+			box-shadow: 5px 5px 0 var(--ink);
+		}
+
+		footer {
+			border-top: 4px solid var(--ink);
+			background: #fff;
+		}
+
+		@media (max-width: 767px) {
+			.hero-title {
+				text-shadow: 2px 2px 0 var(--sun), 4px 4px 0 var(--ink);
+			}
+
+			.gallery-card {
+				padding: 1rem;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg sticky-top">
+		<div class="container py-2">
+			<a class="navbar-brand brand-font" href="index.html">Douglas Farrow</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="siteNav">
+				<ul class="navbar-nav ms-auto fw-semibold">
+					<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="glitch.html">Glitch Art</a></li>
+					<li class="nav-item"><a class="nav-link" href="logo.html">Logo</a></li>
+					<li class="nav-item"><a class="nav-link" href="meme.html">Meme</a></li>
+					<li class="nav-item"><a class="nav-link" href="3d.html">3d Work</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main class="container py-4 py-lg-5">
+		<section class="hero-panel p-4 p-lg-5 mb-5">
+			<div class="hero-content">
+				<p class="sticker mb-3">Net Art Mission</p>
+				<h1 class="hero-title mb-3">Interactive Portal Gallery</h1>
+				<div class="description-bubble mb-4">
+					<p class="mb-0 fs-5">This gallery panel links to an external interactive web artwork. Enter the world and complete the objective.</p>
+				</div>
+				<a href="#gallery" class="btn btn-dark comic-btn px-4">Open Portal Card</a>
+			</div>
+		</section>
+
+		<section id="gallery" class="row g-4 align-items-start">
+			<div class="col-lg-8">
+				<article class="gallery-card h-100">
+					<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+						<h2 class="section-title mb-0">Mission Link</h2>
+						<span class="fw-semibold">Launch in new tab</span>
+					</div>
+					<div class="portal-card">
+						<p class="mb-3">Step through to the hosted project:</p>
+						<a class="portal-link" href="https://douglasfarrow-stack.github.io/Stop-the-fallen-god/" target="_blank" rel="noopener noreferrer">Go and Complete Your Mission</a>
+					</div>
+				</article>
+			</div>
+
+			<div class="col-lg-4">
+				<aside class="gallery-card gallery-note h-100">
+					<h2 class="section-title mb-3">How To View</h2>
+					<p class="mb-3">Click the mission link to open the net art project directly.</p>
+					<p class="mb-0">The destination opens in a new tab so this portfolio page remains available.</p>
+				</aside>
+			</div>
+		</section>
+	</main>
+
+	<footer class="py-4 mt-4">
+		<div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+			<p class="mb-0 fw-semibold">Douglas Farrow Portfolio</p>
+			<p class="mb-0">Net art gallery link hub.</p>
+		</div>
+	</footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
