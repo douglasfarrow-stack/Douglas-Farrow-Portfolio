@@ -81,6 +81,23 @@
 			z-index: 1;
 		}
 
+		.hero-image {
+			border: 4px solid var(--ink);
+			background: #fff;
+			box-shadow: 8px 8px 0 var(--ink);
+			overflow: hidden;
+			margin-bottom: 1.5rem;
+			animation: floatIn 0.7s 0.1s ease-out both;
+		}
+
+		.hero-image img {
+			display: block;
+			width: 100%;
+			height: clamp(280px, 52vw, 560px);
+			object-fit: cover;
+			object-position: center 28%;
+		}
+
 		.comic-title {
 			font-size: clamp(2.4rem, 6vw, 4.8rem);
 			line-height: 0.9;
@@ -262,6 +279,10 @@
 			.speech {
 				max-width: 100%;
 			}
+
+			.hero-image img {
+				height: clamp(220px, 62vw, 340px);
+			}
 		}
 	</style>
 </head>
@@ -288,6 +309,9 @@
 	<main id="top" class="container py-4 py-lg-5">
 		<section class="hero-wrap p-4 p-lg-5 mb-5">
 			<div class="hero-content">
+				<figure class="hero-image" aria-label="Featured portfolio image">
+					<img src="IMG_0049.png" alt="Featured visual from Douglas Farrow portfolio">
+				</figure>
 				<p class="badge badge-burst mb-3 fs-6">Portfolio Homepage</p>
 				<h1 class="comic-title mb-3">Manga Energy<br>Comic Chaos</h1>
 				<div class="position-relative speech mb-4">
