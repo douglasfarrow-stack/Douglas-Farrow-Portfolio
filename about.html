@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Douglas Farrow | Comic Portfolio</title>
+	<title>About Dougie | Douglas Farrow</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
@@ -34,8 +34,8 @@
 		}
 
 		.brand-font,
-		.comic-title,
-		.burst {
+		.page-title,
+		.section-title {
 			font-family: "Bangers", cursive;
 			letter-spacing: 0.04em;
 		}
@@ -57,22 +57,22 @@
 		.hero-wrap::after {
 			content: "";
 			position: absolute;
-			width: 280px;
-			height: 280px;
+			width: 260px;
+			height: 260px;
 			border-radius: 50%;
+			opacity: 0.25;
 			z-index: 0;
-			opacity: 0.3;
 		}
 
 		.hero-wrap::before {
 			top: -120px;
-			left: -60px;
+			left: -80px;
 			background: var(--blue-pop);
 		}
 
 		.hero-wrap::after {
-			right: -80px;
-			bottom: -120px;
+			right: -90px;
+			bottom: -110px;
 			background: var(--punch);
 		}
 
@@ -81,101 +81,46 @@
 			z-index: 1;
 		}
 
-		.hero-image {
-			border: 4px solid var(--ink);
-			background: #fff;
-			box-shadow: 8px 8px 0 var(--ink);
-			overflow: hidden;
-			margin-bottom: 1.5rem;
-			animation: floatIn 0.7s 0.1s ease-out both;
-		}
-
-		.hero-image img {
-			display: block;
-			width: 100%;
-			height: clamp(280px, 52vw, 560px);
-			object-fit: cover;
-			object-position: center 28%;
-		}
-
-		.comic-title {
-			font-size: clamp(2.4rem, 6vw, 4.8rem);
+		.page-title {
+			font-size: clamp(2.3rem, 6vw, 4.6rem);
 			line-height: 0.9;
 			text-transform: uppercase;
 			text-shadow: 3px 3px 0 var(--sun), 6px 6px 0 var(--ink);
 			transform: rotate(-1deg);
 			display: inline-block;
-			animation: popIn 0.9s ease-out both;
 		}
 
-		.speech {
+		.intro-card {
 			border: 3px solid var(--ink);
-			border-radius: 18px;
 			background: #fff;
-			padding: 1rem 1.2rem;
 			box-shadow: 5px 5px 0 var(--ink);
-			max-width: 35rem;
-			animation: floatIn 0.8s 0.2s ease-out both;
-		}
-
-		.speech::after {
-			content: "";
-			position: absolute;
-			width: 22px;
-			height: 22px;
-			background: #fff;
-			border-right: 3px solid var(--ink);
-			border-bottom: 3px solid var(--ink);
-			transform: rotate(45deg);
-			bottom: -13px;
-			left: 24px;
-		}
-
-		.badge-burst {
-			background: var(--sun);
-			color: var(--ink);
-			border: 3px solid var(--ink);
-			font-weight: 800;
-			box-shadow: 3px 3px 0 var(--ink);
+			padding: 1.1rem 1.2rem;
 		}
 
 		.section-title {
-			font-family: "Bangers", cursive;
-			letter-spacing: 0.06em;
-			font-size: clamp(2rem, 5vw, 3.3rem);
-			transform: skew(-6deg);
+			font-size: clamp(2rem, 5vw, 3.2rem);
 			text-shadow: 2px 2px 0 #fff;
+			transform: skew(-5deg);
 		}
 
-		.comic-card {
+		.fact-card {
 			border: 3px solid var(--ink);
-			border-radius: 0;
-			box-shadow: 6px 6px 0 var(--ink);
-			transition: transform 0.2s ease, box-shadow 0.2s ease;
-			overflow: hidden;
 			background: #fff;
-			animation: floatIn 0.6s ease-out both;
+			box-shadow: 6px 6px 0 var(--ink);
+			height: 100%;
 		}
 
-		.comic-card:hover {
-			transform: translate(-4px, -4px);
-			box-shadow: 10px 10px 0 var(--ink);
-		}
-
-		.panel-head {
+		.fact-head {
 			border-bottom: 3px solid var(--ink);
 			font-weight: 800;
 			text-transform: uppercase;
 			letter-spacing: 0.05em;
-			padding: 0.8rem 1rem;
+			padding: 0.7rem 1rem;
 		}
 
-		.panel-head.glitch { background: var(--punch); color: #fff; }
-		.panel-head.logo { background: var(--sun); }
-		.panel-head.meme { background: #79f2be; }
-		.panel-head.work3d { background: #8cc9ff; }
-		.panel-head.net { background: #ffc0f0; }
-		.panel-head.about { background: #d5cbff; }
+		.fact-head.school { background: #8cc9ff; }
+		.fact-head.major { background: #79f2be; }
+		.fact-head.program { background: #ffc0f0; }
 
 		.comic-btn {
 			border: 2px solid var(--ink);
@@ -191,97 +136,14 @@
 			box-shadow: 5px 5px 0 var(--ink);
 		}
 
-		.burst {
-			display: inline-block;
-			background: var(--teal);
-			border: 3px solid var(--ink);
-			color: #fff;
-			font-size: 1.25rem;
-			padding: 0.45rem 0.9rem;
-			clip-path: polygon(50% 0%, 61% 13%, 78% 7%, 82% 24%, 100% 24%, 91% 40%, 100% 55%, 84% 60%, 88% 79%, 71% 76%, 66% 94%, 50% 84%, 33% 94%, 28% 76%, 11% 79%, 15% 60%, 0% 55%, 9% 40%, 0% 24%, 18% 24%, 22% 7%, 39% 13%);
-			box-shadow: 4px 4px 0 var(--ink);
-			animation: bounce 2.2s infinite;
-		}
-
-		.glitch-word {
-			position: relative;
-			display: inline-block;
-			font-weight: 800;
-			text-transform: uppercase;
-			letter-spacing: 0.07em;
-			animation: glitch 1.9s infinite;
-		}
-
-		.glitch-word::before,
-		.glitch-word::after {
-			content: attr(data-text);
-			position: absolute;
-			left: 0;
-			width: 100%;
-			overflow: hidden;
-			clip-path: inset(0 0 0 0);
-		}
-
-		.glitch-word::before {
-			color: #0ff;
-			transform: translate(-2px, 0);
-			animation: glitchTop 1.3s infinite;
-		}
-
-		.glitch-word::after {
-			color: #f0f;
-			transform: translate(2px, 0);
-			animation: glitchBottom 1.7s infinite;
-		}
-
 		footer {
 			border-top: 4px solid var(--ink);
 			background: #fff;
 		}
 
-		@keyframes popIn {
-			from { opacity: 0; transform: scale(0.92) rotate(-4deg); }
-			to { opacity: 1; transform: scale(1) rotate(-1deg); }
-		}
-
-		@keyframes floatIn {
-			from { opacity: 0; transform: translateY(20px); }
-			to { opacity: 1; transform: translateY(0); }
-		}
-
-		@keyframes bounce {
-			0%, 100% { transform: translateY(0) rotate(0deg); }
-			50% { transform: translateY(-5px) rotate(-2deg); }
-		}
-
-		@keyframes glitch {
-			0%, 96%, 100% { transform: translate(0, 0); }
-			97% { transform: translate(-1px, 0); }
-			98% { transform: translate(1px, 0); }
-			99% { transform: translate(0, 1px); }
-		}
-
-		@keyframes glitchTop {
-			0%, 100% { clip-path: inset(0 0 78% 0); }
-			50% { clip-path: inset(0 0 60% 0); transform: translate(-4px, -1px); }
-		}
-
-		@keyframes glitchBottom {
-			0%, 100% { clip-path: inset(74% 0 0 0); }
-			50% { clip-path: inset(68% 0 0 0); transform: translate(4px, 1px); }
-		}
-
 		@media (max-width: 767px) {
-			.comic-title {
+			.page-title {
 				text-shadow: 2px 2px 0 var(--sun), 4px 4px 0 var(--ink);
-			}
-
-			.speech {
-				max-width: 100%;
-			}
-
-			.hero-image img {
-				height: clamp(220px, 62vw, 340px);
 			}
 		}
 	</style>
@@ -289,130 +151,68 @@
 <body>
 	<nav class="navbar navbar-expand-lg sticky-top">
 		<div class="container py-2">
-			<a class="navbar-brand brand-font" href="#top">Douglas Farrow</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Toggle navigation">
+			<a class="navbar-brand brand-font" href="index.html">Douglas Farrow</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#aboutNav" aria-controls="aboutNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="siteNav">
+			<div class="collapse navbar-collapse" id="aboutNav">
 				<ul class="navbar-nav ms-auto fw-semibold">
+					<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="glitch.html">Glitch Art</a></li>
-					<li class="nav-item"><a class="nav-link" href="logo.html">Logo</a></li>
-					<li class="nav-item"><a class="nav-link" href="meme.html">Meme</a></li>
 					<li class="nav-item"><a class="nav-link" href="3d.html">3D Work</a></li>
-					<li class="nav-item"><a class="nav-link" href="netart.html">Net Art</a></li>
-					<li class="nav-item"><a class="nav-link" href="about.html">About Page</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
-	<main id="top" class="container py-4 py-lg-5">
-		<section class="hero-wrap p-4 p-lg-5 mb-5">
+	<main class="container py-4 py-lg-5">
+		<section class="hero-wrap p-4 p-lg-5 mb-5" aria-labelledby="about-title">
 			<div class="hero-content">
-				<figure class="hero-image" aria-label="Featured portfolio image">
-					<img src="IMG_0049.png" alt="Featured visual from Douglas Farrow portfolio">
-				</figure>
-				<p class="badge badge-burst mb-3 fs-6">Portfolio Homepage</p>
-				<h1 class="comic-title mb-3">Manga Energy<br>Comic Chaos</h1>
-				<div class="position-relative speech mb-4">
-					A playful mix of Japanese manga vibe and western comic punch. Explore visual experiments, brand work, internet oddities, and 3D scenes.
+				<p class="badge text-bg-warning border border-3 border-dark rounded-0 mb-3">About Me</p>
+				<h1 id="about-title" class="page-title mb-3">Hey, I Am Douglas Farrow,<br>But You Can Call Me Dougie</h1>
+				<div class="intro-card mb-4">
+					<p class="mb-2 fw-semibold">I am an undergraduate student at San Jose State University (SJSU).</p>
+					<p class="mb-0">I am currently studying Digital Media Art (DMA) as my major in the BFA Program, where I develop creative and technical skills across design, storytelling, and experimental media.</p>
 				</div>
-				<div class="d-flex flex-wrap align-items-center gap-3">
-					<a href="#work" class="btn btn-dark comic-btn px-4">Enter Portfolio</a>
-					<span class="burst">POW!</span>
-				</div>
+				<a href="index.html" class="btn btn-dark comic-btn px-4">Back To Homepage</a>
 			</div>
 		</section>
 
-		<section id="work" class="mb-5">
-			<div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-3">
-				<h2 class="section-title mb-0">Featured Panels</h2>
-				<p class="mb-0 fw-semibold">Simple, fast navigation with bold visuals.</p>
-			</div>
-
+		<section aria-labelledby="quick-facts-heading" class="mb-4">
+			<h2 id="quick-facts-heading" class="section-title mb-3">Quick Facts</h2>
 			<div class="row g-4">
-				<div class="col-md-6 col-lg-4" id="glitch-art">
-					<article class="card comic-card h-100" style="animation-delay: 0.05s;">
-						<div class="panel-head glitch">Glitch Art</div>
-						<div class="card-body d-flex flex-column">
-							<h3 class="h5"><span class="glitch-word" data-text="Signal Break">Signal Break</span></h3>
-							<p>Databent visuals, channel shifts, and analog noise experiments.</p>
-							<a class="btn btn-outline-dark comic-btn mt-auto" href="glitch.html">View Glitch Art</a>
+				<div class="col-md-4">
+					<article class="fact-card">
+						<div class="fact-head school">School</div>
+						<div class="p-3">
+							<p class="mb-0">San Jose State University (SJSU)</p>
 						</div>
 					</article>
 				</div>
-
-				<div class="col-md-6 col-lg-4" id="logo">
-					<article class="card comic-card h-100" style="animation-delay: 0.1s;">
-						<div class="panel-head logo">Logo</div>
-						<div class="card-body d-flex flex-column">
-							<h3 class="h5">Identity Kicks</h3>
-							<p>Strong marks built for personality, flexibility, and impact.</p>
-							<a class="btn btn-outline-dark comic-btn mt-auto" href="logo.html">View Logos</a>
+				<div class="col-md-4">
+					<article class="fact-card">
+						<div class="fact-head major">Major</div>
+						<div class="p-3">
+							<p class="mb-0">Digital Media Art (DMA)</p>
 						</div>
 					</article>
 				</div>
-
-				<div class="col-md-6 col-lg-4" id="meme">
-					<article class="card comic-card h-100" style="animation-delay: 0.15s;">
-						<div class="panel-head meme">Meme</div>
-						<div class="card-body d-flex flex-column">
-							<h3 class="h5">Internet Jokes Dept.</h3>
-							<p>Culture remix sketches and rapid-fire visual comedy.</p>
-							<a class="btn btn-outline-dark comic-btn mt-auto" href="meme.html">View Memes</a>
+				<div class="col-md-4">
+					<article class="fact-card">
+						<div class="fact-head program">Program</div>
+						<div class="p-3">
+							<p class="mb-0">Bachelor of Fine Arts (BFA)</p>
 						</div>
 					</article>
 				</div>
-
-				<div class="col-md-6 col-lg-4" id="work-3d">
-					<article class="card comic-card h-100" style="animation-delay: 0.2s;">
-						<div class="panel-head work3d">3D Work</div>
-						<div class="card-body d-flex flex-column">
-							<h3 class="h5">Depth + Motion</h3>
-							<p>Rendered objects and environments with stylized storytelling.</p>
-							<a class="btn btn-outline-dark comic-btn mt-auto" href="3d.html">View 3D Work</a>
-						</div>
-					</article>
-				</div>
-
-				<div class="col-md-6 col-lg-4" id="net-art">
-					<article class="card comic-card h-100" style="animation-delay: 0.25s;">
-						<div class="panel-head net">Net Art</div>
-						<div class="card-body d-flex flex-column">
-							<h3 class="h5">Browser Playground</h3>
-							<p>Interactive web experiments made for clicks, scrolls, and surprise.</p>
-							<a class="btn btn-outline-dark comic-btn mt-auto" href="netart.html">View Net Art</a>
-						</div>
-					</article>
-				</div>
-
-				<div class="col-md-6 col-lg-4" id="about">
-					<article class="card comic-card h-100" style="animation-delay: 0.3s;">
-						<div class="panel-head about">About Page</div>
-						<div class="card-body d-flex flex-column">
-							<h3 class="h5">Who Is Douglas?</h3>
-							<p>Artist statement, process, background, and collaboration details.</p>
-							<a class="btn btn-outline-dark comic-btn mt-auto" href="about.html">Go to About</a>
-						</div>
-					</article>
-				</div>
-			</div>
-		</section>
-
-		<section class="hero-wrap p-4 p-lg-5" aria-labelledby="about-heading">
-			<div class="hero-content">
-				<h2 id="about-heading" class="section-title mb-3">About Page</h2>
-				<p class="lead mb-2">I build visual worlds that fuse bold comic language with playful digital experimentation.</p>
-				<p class="mb-4">From brand identities to net-native work, each project blends storytelling, style, and technical craft. If you want energetic visuals with character, this is the place.</p>
-				<a href="#top" class="btn btn-dark comic-btn">Back To Top</a>
 			</div>
 		</section>
 	</main>
 
 	<footer class="py-4">
 		<div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
-			<p class="mb-0 fw-semibold">Douglas Farrow Portfolio</p>
-			<p class="mb-0">Built with Bootstrap and comic-inspired style.</p>
+			<p class="mb-0 fw-semibold">Douglas "Dougie" Farrow</p>
+			<p class="mb-0">DMA Major | BFA Program | SJSU</p>
 		</div>
 	</footer>
 
