@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Game | Douglas Farrow Portfolio</title>
+	<title>Code As Art 1 | Douglas Farrow Portfolio</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
@@ -102,6 +102,27 @@
 			padding: 2rem 1rem;
 		}
 
+		.info-box {
+			border: 4px solid var(--ink);
+			background: #fff;
+			padding: 1.5rem;
+			box-shadow: 8px 8px 0 var(--ink);
+			max-width: 900px;
+			margin-bottom: 2rem;
+		}
+
+		.info-box h2 {
+			font-family: "Bangers", cursive;
+			font-size: 1.8rem;
+			margin-bottom: 1rem;
+		}
+
+		.info-box p {
+			margin: 0;
+			line-height: 1.7;
+			font-size: 1rem;
+		}
+
 		.art-image {
 			border: 5px solid var(--ink);
 			max-width: 100%;
@@ -167,9 +188,15 @@
 			<!-- Back Link -->
 			<a href="SelectCode.html" class="back-nav">Go Back</a>
 
+			<!-- Explanation Box -->
+			<div class="info-box">
+				<h2>How I Created This Game</h2>
+				<p>This game is inspired by the popular web game Quick Draw. I recreated the core idea by using code to generate prompts.</p>
+			</div>
+
 			<!-- Interactive Canvas Display -->
 			<div class="canvas-container">
-			<iframe src="https://editor.p5js.org/douglasfarrow-stack/full/ZP0aqxVZm"></iframe>
+				<iframe src="https://editor.p5js.org/douglasfarrow-stack/full/ZP0aqxVZm"></iframe>
 			</div>
 		</div>
 	</main>
