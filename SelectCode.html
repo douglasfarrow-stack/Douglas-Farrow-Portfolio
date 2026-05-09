@@ -1,1 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Code As Art | Douglas Farrow Portfolio</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<style>
+		:root {
+			--ink: #101010;
+			--paper: #fff8ef;
+			--sun: #ffcc00;
+			--punch: #ff3c38;
+			--blue-pop: #1677ff;
+			--teal: #00b7a8;
+			--dot: rgba(0, 0, 0, 0.15);
+		}
 
+		body {
+			background:
+				radial-gradient(circle at 1px 1px, var(--dot) 1.2px, transparent 0) 0 0 / 14px 14px,
+				linear-gradient(130deg, #fffdf8 0%, #fff2cc 45%, #ffe2d4 100%);
+			color: var(--ink);
+			font-family: "Archivo", sans-serif;
+			min-height: 100vh;
+		}
+
+		.navbar {
+			border-bottom: 4px solid var(--ink);
+			background: #fff;
+		}
+
+		.brand-font,
+		.comic-title,
+		.burst {
+			font-family: "Bangers", cursive;
+			letter-spacing: 0.04em;
+		}
+
+		.brand-font {
+			font-size: 2rem;
+			line-height: 1;
+		}
+
+		.page-title {
+			font-family: "Bangers", cursive;
+			letter-spacing: 0.06em;
+			font-size: clamp(2.4rem, 6vw, 4.8rem);
+			line-height: 0.9;
+			text-transform: uppercase;
+			text-shadow: 3px 3px 0 var(--sun), 6px 6px 0 var(--ink);
+			transform: rotate(-1deg);
+			display: inline-block;
+			margin-bottom: 2rem;
+		}
+
+		.panels-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 2rem;
+			padding: 2rem 1rem;
+		}
+
+		.art-panel {
+			border: 4px solid var(--ink);
+			border-radius: 0;
+			box-shadow: 8px 8px 0 var(--ink);
+			transition: all 0.2s ease;
+			overflow: hidden;
+			background: #fff;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			text-decoration: none;
+			color: var(--ink);
+		}
+
+		.art-panel:hover {
+			transform: translate(-4px, -4px);
+			box-shadow: 12px 12px 0 var(--ink);
+		}
+
+		.art-panel:hover .panel-action {
+			background: var(--blue-pop);
+			color: #fff;
+			transform: translate(-2px, -2px);
+			box-shadow: 5px 5px 0 var(--ink);
+		}
+
+		.panel-header {
+			border-bottom: 4px solid var(--ink);
+			font-weight: 800;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			padding: 1.2rem;
+			font-size: 1.3rem;
+		}
+
+		.panel-header.art1 { background: #6a5cff; color: #fff; }
+		.panel-header.art2 { background: #ff3c38; color: #fff; }
+		.panel-header.art3 { background: #00b7a8; color: #fff; }
+
+		.panel-content {
+			flex: 1;
+			padding: 2rem 1.5rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.panel-description {
+			margin-bottom: 1.5rem;
+			font-size: 1.1rem;
+			line-height: 1.6;
+		}
+
+		.panel-action {
+			border: 3px solid var(--ink);
+			border-radius: 0;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			box-shadow: 4px 4px 0 var(--ink);
+			padding: 0.8rem 1rem;
+			transition: all 0.2s ease;
+			display: inline-block;
+			width: 100%;
+			text-align: center;
+			background: #fff;
+			color: var(--ink);
+		}
+
+		@keyframes floatIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.art-panel {
+			animation: floatIn 0.6s ease-out both;
+		}
+
+		.art-panel:nth-child(2) {
+			animation-delay: 0.1s;
+		}
+
+		.art-panel:nth-child(3) {
+			animation-delay: 0.2s;
+		}
+
+		.footer {
+			border-top: 4px solid var(--ink);
+			background: #fff;
+			margin-top: 3rem;
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar sticky-top">
+		<div class="container-fluid">
+			<a class="navbar-brand brand-font" href="index.html">Douglas Farrow</a>
+		</div>
+	</nav>
+
+	<main class="container-fluid">
+		<div class="py-5">
+			<h1 class="page-title">Code As Art</h1>
+			<p class="lead" style="max-width: 40rem; font-size: 1.2rem;">
+				Explore three unique digital art projects that blend code with creativity.
+			</p>
+		</div>
+
+		<div class="panels-container">
+			<!-- Code As Art 1 Panel -->
+			<a href="CodeAsArt1.html" class="art-panel">
+				<div class="panel-header art1">Code As Art 1</div>
+				<div class="panel-content">
+					<p class="panel-description">
+						Dive into the first digital art experience where programming becomes visual expression.
+					</p>
+					<button class="panel-action">Explore</button>
+				</div>
+			</a>
+
+			<!-- Code As Art 2 Panel -->
+			<a href="CodeAsArt2.html" class="art-panel">
+				<div class="panel-header art2">Code As Art 2</div>
+				<div class="panel-content">
+					<p class="panel-description">
+						Discover the second piece in this series, pushing the boundaries of code and art.
+					</p>
+					<button class="panel-action">Explore</button>
+				</div>
+			</a>
+
+			<!-- Code As Art 3 Panel -->
+			<a href="CodeAsArt3.html" class="art-panel">
+				<div class="panel-header art3">Code As Art 3</div>
+				<div class="panel-content">
+					<p class="panel-description">
+						Experience the culmination of code-based creativity in this final stunning work.
+					</p>
+					<button class="panel-action">Explore</button>
+				</div>
+			</a>
+		</div>
+	</main>
+
+	<footer class="footer py-4 mt-5">
+		<div class="container-fluid text-center">
+			<p class="mb-0">&copy; 2026 Douglas Farrow. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NJTWE3xwj4GjPdiYMVEQBjByV7j" crossorigin="anonymous"></script>
+</body>
+</html>
