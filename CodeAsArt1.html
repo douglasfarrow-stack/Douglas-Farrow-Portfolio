@@ -129,6 +129,43 @@
 			height: auto;
 			box-shadow: 10px 10px 0 var(--ink);
 			background: #fff;
+			cursor: zoom-in;
+			transition: transform 0.25s ease;
+		}
+
+		.art-image:hover {
+			transform: scale(1.02);
+		}
+
+		.image-zoom-overlay {
+			display: none;
+			position: fixed;
+			inset: 0;
+			background: rgba(16, 16, 16, 0.85);
+			z-index: 1050;
+			align-items: center;
+			justify-content: center;
+			padding: 2rem;
+		}
+
+		.image-zoom-overlay.active {
+			display: flex;
+		}
+
+		.image-zoom-overlay img {
+			max-width: 90vw;
+			max-height: 90vh;
+			border: 4px solid #fff;
+			box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+		}
+
+		.image-zoom-overlay::after {
+			content: "Click anywhere to close";
+			position: absolute;
+			bottom: 1rem;
+			color: #fff;
+			font-size: 0.95rem;
+			opacity: 0.8;
 		}
 
 		.image-container {
@@ -190,6 +227,40 @@
 		</div>
 	</footer>
 
+	<div id="zoomOverlay" class="image-zoom-overlay" aria-hidden="true" tabindex="-1">
+		<img id="zoomedImage" src="" alt="Zoomed version of Code As Art 1 image">
+	</div>
+
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NJTWE3xwj4GjPdiYMVEQBjByV7j" crossorigin="anonymous"></script>
+	<script>
+		const artImage = document.querySelector('.art-image');
+		const zoomOverlay = document.getElementById('zoomOverlay');
+		const zoomedImage = document.getElementById('zoomedImage');
+
+		function openZoom() {
+			zoomedImage.src = artImage.src;
+			zoomedImage.alt = artImage.alt;
+			zoomOverlay.classList.add('active');
+			zoomOverlay.setAttribute('aria-hidden', 'false');
+			zoomOverlay.focus();
+		}
+
+		function closeZoom() {
+			zoomOverlay.classList.remove('active');
+			zoomOverlay.setAttribute('aria-hidden', 'true');
+		}
+
+		if (artImage) {
+			artImage.addEventListener('click', openZoom);
+		}
+
+		zoomOverlay.addEventListener('click', closeZoom);
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && zoomOverlay.classList.contains('active')) {
+				closeZoom();
+			}
+		});
+	</script>
 </body>
 </html>
