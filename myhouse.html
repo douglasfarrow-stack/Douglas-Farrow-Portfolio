@@ -117,6 +117,43 @@
 			border: 3px solid var(--ink);
 			box-shadow: 8px 8px 0 var(--ink);
 			background: #fff;
+			cursor: zoom-in;
+			transition: transform 0.25s ease;
+		}
+
+		.feature-image:hover {
+			transform: scale(1.01);
+		}
+
+		.image-zoom-overlay {
+			display: none;
+			position: fixed;
+			inset: 0;
+			background: rgba(16, 16, 16, 0.85);
+			z-index: 1050;
+			align-items: center;
+			justify-content: center;
+			padding: 2rem;
+		}
+
+		.image-zoom-overlay.active {
+			display: flex;
+		}
+
+		.image-zoom-overlay img {
+			max-width: 90vw;
+			max-height: 90vh;
+			border: 4px solid #fff;
+			box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+		}
+
+		.image-zoom-overlay::after {
+			content: "Click anywhere to close";
+			position: absolute;
+			bottom: 1rem;
+			color: #fff;
+			font-size: 0.95rem;
+			opacity: 0.85;
 		}
 
 		.description {
@@ -192,16 +229,66 @@
 			</div>
 			<div class="col-lg-5">
 				<div class="panel p-3">
-					<img class="feature-image" src="My House.png" alt="Render of My House created in Blender">
+					<img class="feature-image" src="My House.png" alt="Render of My House created in Blender" data-bs-toggle="modal" data-bs-target="#imageModal" style="cursor: pointer;">
 				</div>
 			</div>
 		</div>
 	</main>
+
+	<!-- Image Zoom Modal -->
+	<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="imageModalLabel">My House - Blender Render</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body text-center">
+					<img src="My House.png" alt="Render of My House created in Blender" class="img-fluid">
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<footer class="container py-4 text-center">
 		<p class="mb-0">Rendered in Blender · Designed by Douglas Farrow</p>
 	</footer>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZfD7M0cfDQ+9kS+chq0GGuqT6FPRvvat8gdBZdj/47/stIK3yRe7CC5D71H0boqK" crossorigin="anonymous"></script>
+
+	<div id="zoomOverlay" class="image-zoom-overlay" aria-hidden="true" tabindex="-1">
+		<img id="zoomedImage" src="" alt="Zoomed version of the house image">
+	</div>
+
+	<script>
+		const featureImage = document.querySelector('.feature-image');
+		const zoomOverlay = document.getElementById('zoomOverlay');
+		const zoomedImage = document.getElementById('zoomedImage');
+
+		function openZoom() {
+			zoomedImage.src = featureImage.src;
+			zoomedImage.alt = featureImage.alt;
+			zoomOverlay.classList.add('active');
+			zoomOverlay.setAttribute('aria-hidden', 'false');
+			zoomOverlay.focus();
+		}
+
+		function closeZoom() {
+			zoomOverlay.classList.remove('active');
+			zoomOverlay.setAttribute('aria-hidden', 'true');
+		}
+
+		if (featureImage) {
+			featureImage.addEventListener('click', openZoom);
+		}
+
+		zoomOverlay.addEventListener('click', closeZoom);
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && zoomOverlay.classList.contains('active')) {
+				closeZoom();
+			}
+		});
+	</script>
 </body>
 </html>
